@@ -1,0 +1,18 @@
+<div class="fixed-top">
+  <app-nav-bar></app-nav-bar>
+</div>
+<br>
+<div class="container-fluid mt-5">
+  <div class="row">
+    <div class="py-1 pt-md-1 pb-md-1 mx-auto container-fluid">
+      <h1 class="">{{ pageTitle$ | async }}</h1>
+      <p class="lead">{{ pageDescription$ | async }}</p>
+    </div>
+  </div>
+
+  <div class="row">
+       <router-outlet></router-outlet>
+  </div>
+</div>
+  <app-growl-notification></app-growl-notification>
+

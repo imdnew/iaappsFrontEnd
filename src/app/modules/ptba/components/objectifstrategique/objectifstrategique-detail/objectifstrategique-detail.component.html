@@ -1,0 +1,16 @@
+<div class="card" style="width: 18rem;" *ngIf="objectifstrategique$ | async; let objectifstrategique">
+    <div class="card-body">
+      <label>Code :</label>
+      <h5 class="card-title">{{objectifstrategique.code | uppercase}}</h5>
+      <label>Libelle :</label>
+    <h6 class="mb-2">{{objectifstrategique.libelle | titlecase}}</h6>
+      <p class="card-text"><small class="text-muted">Créee le {{objectifstrategique.created_at | date:'dd/MM/yyyy'}}</small></p>
+         <button class="btn btn-primary btn-sm mx-1"
+        [disabled]="!loggedOut$ | async"
+        (click)="edit()">Modifier</button>
+
+<button class="btn btn-danger btn-sm mx-1"
+        (click)="open('focusFirst')">Supprimer</button>
+
+    </div>
+  </div>

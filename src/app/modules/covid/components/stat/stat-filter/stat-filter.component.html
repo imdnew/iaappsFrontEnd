@@ -1,0 +1,9 @@
+<ng-container *ngIf="queryValueChanges$ | async"></ng-container>
+<form [formGroup]="form">
+  <div class="form-group">
+    <label>Rechercher:</label>
+    <input class="form-control"
+           type="string"
+           formControlName="query">
+  </div>
+</form>

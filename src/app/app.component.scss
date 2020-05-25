@@ -1,0 +1,19 @@
+.bred {
+    border:1px solid red;
+}
+
+.bblack {
+    border:1px solid black;
+}
+
+.bgreen {
+    border:1px solid green;
+}
+
+.bblue {
+    border:1px solid blue;
+}
+
+scroll-container {
+  display: block;width: 350px;height: 200px;overflow-y: scroll;scroll-behavior: smooth;background-color:red;border:2px solid blue;
+}

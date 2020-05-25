@@ -1,0 +1,66 @@
+.appcontainer {
+ display:grid;
+  grid-template: "head head head head"
+                 "main  main main details";
+border:2px dotted black;
+  outline: 2px solid black;
+  outline-offset : 5px;
+}
+
+.appheader {
+  grid-area:head;
+  background-color: #ddd;
+}
+.appcontent {
+  grid-area:main;
+  background-color: #fafafa;
+}
+.appdetails {
+  grid-area:details;
+  background-color: #035;
+}
+
+.c-blue {
+  /*width: auto;
+  height: 70vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;*/
+  border:2px solid blue;
+  color: red;
+}
+.c-green {
+  border:2px solid green;
+}
+
+.c-pink {
+  border:2px solid pink;
+}
+
+.c-red {
+  border:2px solid #F55;
+}
+.c-black {
+  border:2px solid #000;
+}
+
+.r-flex{
+  display: grid;
+  flex: 0 1 auto;
+  flex-direction: column;
+  width:100vw;
+}
+.r-c-100{
+  width:100%;
+}
+
+
+.growl{
+  position :fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:30px;
+  padding:5em;
+  text-align:center;
+  z-index: 1050;
+}

@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+      <div class="col-12 col-md-2">
+        <app-vm-filter class="float-left"></app-vm-filter>
+    </div>
+    <div class="col-12 col-md-5">
+      <div class="px-0 pt-4 d-flex align-items-left">
+      <div *ngIf="loading$ | async">
+            <div class="spinner-border spinner-border-sm text-primary" role="status">
+         </div>
+      <span class="ml-2">En cours de chargement... </span>
+         </div>
+      </div>
+     </div>
+  <div class="col-12 col-md-2">
+    <button class="btn btn-outline-success my-3 float-right glyphicon-apple"
+    [disabled]="loggedOut$ | async"
+       (click)="openModal()"> Ajouter vm </button> 
+</div>
+  </div>
+    <div class="row">
+      <div class="col-12 col-md-9">
+        <app-vm-list></app-vm-list>
+      </div>
+      <div class="col-12 col-md-3 d-md-block">
+        <app-vm-detail></app-vm-detail>
+      </div> 
+    </div>
+  </div>
+  

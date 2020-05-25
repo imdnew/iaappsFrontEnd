@@ -1,0 +1,46 @@
+<ng-container *ngIf="edit$ | async"> </ng-container>
+<div class="modal-header">
+  <h4 class="modal-title">{{formTitle$ | async}}</h4>
+  <button type="button"
+          class="close"
+          aria-label="Close"
+          (click)="dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="form"
+        (ngSubmit)="save()">
+
+    <div class="form-group">
+      <label>Sigle:</label>
+      <input class="form-control"
+             [class.is-invalid]="form.controls['sigle'].invalid && form.controls['sigle'].touched"
+             type="string"
+             formControlName="sigle">
+      <div class="invalid-feedback"
+           [class.d-block]="form.controls['sigle'].invalid && form.controls['sigle'].touched && form.controls['sigle'].hasError('required')">
+        (*) Sigle requise
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Nom:</label>
+      <input class="form-control"
+             [class.is-invalid]="form.controls['nom'].invalid && form.controls['nom'].touched"
+             type="string"
+             formControlName="nom">
+      <div class="invalid-feedback"
+           [class.d-block]="form.controls['nom'].invalid && form.controls['nom'].touched && form.controls['nom'].hasError('required')">
+        (*) nom requis
+      </div>
+    </div>
+
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-secondary mx-2"
+          (click)="dismiss()"> Annuler </button>
+  <button class="btn btn-primary mx-2"
+          [disabled]="disabled"
+          (click)="save()"> Enregistrer </button>
+</div>

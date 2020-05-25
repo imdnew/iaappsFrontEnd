@@ -1,0 +1,42 @@
+<!-- <div class="card"
+     *ngIf="vm$ | async; let vm">
+  <div class="card-body">
+    <h5 class="card-title">{{vm.nom}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{vm.adresseip}}</h6>
+    <p class="card-text">{{vm.groupe}}</p>
+    <p class="card-text">{{vm.ports}}</p>
+    <p class="card-text">{{vm.description}}</p>
+
+    <button class="btn btn-primary btn-sm mx-1"
+            [disabled]="loggedOut$ | async"
+            (click)="edit()">Modifier</button>
+
+    <button class="btn btn-danger btn-sm mx-1"
+            (click)="delete(vm.id)">Supprimer</button>
+  </div>
+</div> -->
+
+
+
+      <div class="card" style="width: 18rem;" *ngIf="vm$ | async; let vm">
+        <div class="card-body">
+          <h5 class="card-title">{{vm.nom}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">@ip : {{vm.adresseip}}</h6>
+        <p class="card-text">Groupe : {{vm.groupe}}</p>
+        <p class="card-text">Ports : {{vm.ports}}</p>  
+        <p class="card-text card">Desc : {{vm.description}}.</p>
+        <p class="card-text card">Projet : {{vm.projet}}.</p>
+        <p class="card-text card">Os : {{vm.os}}.</p>
+        <p class="card-text card-small"><u> Structure</u> : {{vm.structure | uppercase}} </p>
+        <p class="card-text"><small class="text-muted">Créee le {{vm.datecreation}}</small></p>
+
+
+<!--           <p class="card-text"><small class="text-muted">Dernière modification le {{vm.created?.timestamp.seconds * 1000 | date:'dd/MM/yyyy HH:mm:ss'}}</small></p>
+ -->          <button class="btn btn-primary btn-sm mx-1"
+            [disabled]="loggedOut$ | async"
+            (click)="edit()">Modifier</button>
+
+    <button class="btn btn-danger btn-sm mx-1"
+            (click)="delete(vm.id)">Supprimer</button>
+        </div>
+      </div>

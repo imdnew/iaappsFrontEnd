@@ -1,0 +1,43 @@
+<div class="d-flex justify-content-between p-2">
+    <ngb-pagination
+    [collectionSize]="collectionSize"
+    [(page)]="page"
+    [pageSize]="pageSize">
+    </ngb-pagination>
+
+    <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
+      <option [ngValue]="2">2 elements par page</option>
+      <option [ngValue]="4">4 elements par page</option>
+      <option [ngValue]="8">8 elements par page</option>
+      <option [ngValue]="10">10 elements par page</option>
+      <option [ngValue]="50">50 elements par page</option>
+      <option [ngValue]="150">150 elements par page</option>
+    </select>
+  </div>
+ <table class="table table-striped" *ngIf="(objectifstrategiques$ | async).length > 0 ">
+    <thead>
+      <tr>
+       <th scope="col">Id</th>
+       <th scope="col">Code</th>
+        <th scope="col">Libelle</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr *ngFor="let objectifstrategique of $objectifstrategiques | async, index as i"> -->
+     <tr *ngFor="let objectifstrategique of objectifstrategiques, index as i">
+        <td>{{objectifstrategique.id }}</td>
+        <td>{{objectifstrategique.code | uppercase}}</td>
+        <td>{{objectifstrategique.libelle | titlecase}}</td>
+        <td>
+            <button class="btn btn-outline-info btn-sm"
+            (click)="detail(objectifstrategique)">Détails</button>
+        </td>
+      </tr>
+  </table>
+<div *ngIf="(objectifstrategiques$ | async).length <= 0 " class="d-flex flex-row justify-content-center">
+  <img class="img-responsive"  src="assets/img/no-data.png">
+  <br>
+  <div>Aucune donnée</div>
+</div>
+
