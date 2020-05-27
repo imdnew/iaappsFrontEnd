@@ -30,6 +30,11 @@ export class FilterObjectifstrategiques {
   constructor(public payload: string) { }
 }
 
+export class GetObjectifstrategiques {
+  static readonly type = '[Objectifstrategique] GetObjectifstrategiques All';
+  constructor() { }
+}
+
 export class SelectObjectifstrategique {
   static readonly type = '[Objectifstrategique] SelectObjectifstrategique';
   constructor(public payload: Objectifstrategique) { }

@@ -13,6 +13,9 @@ import {ObjectifstrategiqueDetailComponent} from './modules/ptba/components/obje
 // tslint:disable-next-line:max-line-length
 import {ObjectifstrategiqueListComponent} from './modules/ptba/components/objectifstrategique/objectifstrategique-list/objectifstrategique-list.component';
 import {ObjectifstrategiquesComponent} from './modules/ptba/pages/objectifstrategiques/objectifstrategiques.component';
+import {ObjectifspecifiqueListComponent} from './modules/ptba/components/objectifspecifique/objectifspecifique-list/objectifspecifique-list.component';
+import {ObjectifspecifiqueDetailComponent} from './modules/ptba/components/objectifspecifique/objectifspecifique-detail/objectifspecifique-detail.component';
+import {ObjectifspecifiquesComponent} from './modules/ptba/pages/objectifspecifiques/objectifspecifiques.component';
 
 export const PAGE_HEADS = {
   VMS: { title: 'Ressources OnBoarding', description: 'Liste des ressources, machines virtuelles hébergées dans le cadre des projets' },
@@ -56,6 +59,24 @@ const routes: Routes = [
       {
         path: ':id',
         component: ObjectifstrategiqueDetailComponent,
+        outlet: 'outletDetails',
+        data: PAGE_HEADS.PTBAS
+      },
+    ],
+    data: PAGE_HEADS.PTBAS,
+  },
+  {
+    path: 'ptba/objectifspecifiques',
+    component: ObjectifspecifiquesComponent,
+    children: [
+      {
+        path: '',
+        component: ObjectifspecifiqueListComponent,
+        data: PAGE_HEADS.PTBAS
+      },
+      {
+        path: ':id',
+        component: ObjectifspecifiqueDetailComponent,
         outlet: 'outletDetails',
         data: PAGE_HEADS.PTBAS
       },

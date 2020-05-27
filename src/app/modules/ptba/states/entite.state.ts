@@ -10,7 +10,7 @@ import {
   FilterEntites,
   SetLoading,
   SetLoaded,
-  UpsertEntite
+  UpsertEntite, GetEntites
 } from './entite.actions';
 import {tap, debounceTime, switchMap, map} from 'rxjs/operators';
 import {GrowlNotificationActions} from '../../../states/growl-notification/growl-notification.actions';
@@ -37,6 +37,12 @@ export interface EntiteStateModel extends LoadableStateModel {
 })
 export class EntiteState implements NgxsOnInit {
 
+  constructor(
+    private entiteService: EntiteService,
+    private actions$: Actions
+  ) {
+
+  }
   @Selector()
   static loading(state: LoadableStateModel) {
     return state.loading;
@@ -47,13 +53,18 @@ export class EntiteState implements NgxsOnInit {
     return state.loaded;
   }
 
-  constructor(
-    private entiteService: EntiteService,
-    private actions$: Actions
-  ) {
-
+  @Selector()
+  static formTitle(state: EntiteStateModel) {
+    return state.formTitle;
   }
-
+  @Selector()
+  static entites(state: EntiteStateModel) {
+    return state.entites;
+  }
+  @Selector()
+  static selected(state: EntiteStateModel) {
+    return state.selected;
+  }
   ngxsOnInit({patchState, dispatch}: StateContext<EntiteStateModel>) {
 
     this.actions$.pipe(
@@ -86,21 +97,6 @@ export class EntiteState implements NgxsOnInit {
       })
     ).subscribe();
   }
-
-  @Selector()
-  static formTitle(state: EntiteStateModel) {
-    return state.formTitle;
-  };
-
-  @Selector()
-  static entites(state: EntiteStateModel) {
-    return state.entites;
-  };
-
-  @Selector()
-  static selected(state: EntiteStateModel) {
-    return state.selected;
-  };
 
   @Action(SetFormTitle)
   setFormTitle({patchState}: StateContext<EntiteStateModel>, action: SetFormTitle) {
@@ -162,6 +158,17 @@ export class EntiteState implements NgxsOnInit {
   @Action(FilterEntites)
   FilterEntites({patchState}: StateContext<EntiteStateModel>, action: FilterEntites) {
     patchState({filterBy: action.payload});
+  }
+
+  @Action(GetEntites)
+  async GetEntites({patchState}: StateContext<EntiteStateModel>) {
+    await this.entiteService.getAll().pipe(tap((result) => {
+      patchState({
+        loaded: true,
+        loading: false,
+        entites: result
+      });
+    })).subscribe();
   }
 
   @Action(ClearSelectedEntite)

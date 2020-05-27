@@ -7,6 +7,8 @@ import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { NgbActiveModal,   NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import {EntiteState} from '../../../states/entite.state';
+import {GetEntites} from '../../../states/entite.actions';
 
 @Component({
   selector: 'app-objectifstrategique-form',
@@ -16,11 +18,13 @@ import { Observable } from 'rxjs';
 export class ObjectifstrategiqueFormComponent implements OnInit {
 
   @Select(ObjectifstrategiqueState.formTitle) formTitle$;
+  @Select(EntiteState.entites) entites$;
 
   form: FormGroup = new FormGroup({
     id: new FormControl(''),
     code: new FormControl('', Validators.required),
     libelle: new FormControl(''),
+    entite: new FormControl('', Validators.required),
   });
   edit$: Observable<any>;
 
@@ -39,6 +43,7 @@ export class ObjectifstrategiqueFormComponent implements OnInit {
         this.form.enable();
       })
     );
+    this.store.dispatch(new GetEntites());
   }
 
   dismiss() {

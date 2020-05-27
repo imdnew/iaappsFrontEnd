@@ -30,6 +30,11 @@ export class FilterEntites {
   constructor(public payload: string) { }
 }
 
+export class GetEntites {
+  static readonly type = '[Entite] GetEntites All';
+  constructor() { }
+}
+
 export class SelectEntite {
   static readonly type = '[Entite] SelectEntite';
   constructor(public payload: Entite) { }

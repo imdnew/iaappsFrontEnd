@@ -7,6 +7,7 @@ import {VmState} from '../modules/onboarding/states/vm.state';
 import {StatState} from '../modules/covid/states/stat.state';
 import {EntiteState} from '../modules/ptba/states/entite.state';
 import {ObjectifstrategiqueState} from '../modules/ptba/states/objectifstrategique.state';
+import {ObjectifspecifiqueState} from '../modules/ptba/states/objectifspecifique.state';
 
 export const STATES = [
   PageHeadState,
@@ -18,5 +19,6 @@ export const STATES = [
   VmState,
   StatState,
   EntiteState,
-  ObjectifstrategiqueState
+  ObjectifstrategiqueState,
+  ObjectifspecifiqueState
 ];

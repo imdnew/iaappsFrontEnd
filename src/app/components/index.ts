@@ -11,6 +11,8 @@ import {NgbdEntiteModalConfirm} from '../modules/ptba/components/entite/entite-d
 import {ObjectifstrategiqueFormComponent} from '../modules/ptba/components/objectifstrategique/objectifstrategique-form/objectifstrategique-form.component';
 // tslint:disable-next-line:max-line-length
 import {NgbdObjectifstrategiqueModalConfirm} from '../modules/ptba/components/objectifstrategique/objectifstrategique-detail/objectifstrategique-detail.component';
+import {NgbdObjectifspecifiqueModalConfirm} from '../modules/ptba/components/objectifspecifique/objectifspecifique-detail/objectifspecifique-detail.component';
+import {ObjectifspecifiqueFormComponent} from '../modules/ptba/components/objectifspecifique/objectifspecifique-form/objectifspecifique-form.component';
 
 export const COMPONENTS = [
   NavBarComponent,
@@ -26,5 +28,7 @@ export const ENTRY_COMPONENTS = [
   EntiteFormComponent,
   NgbdEntiteModalConfirm,
   ObjectifstrategiqueFormComponent,
-  NgbdObjectifstrategiqueModalConfirm
+  NgbdObjectifstrategiqueModalConfirm,
+  ObjectifspecifiqueFormComponent,
+  NgbdObjectifspecifiqueModalConfirm
 ];

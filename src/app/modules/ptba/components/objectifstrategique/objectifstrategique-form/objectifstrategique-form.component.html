@@ -35,6 +35,16 @@
       </div>
     </div>
 
+    <div class="form-group">
+      <label for="entite">Entité</label>
+      <select class="form-control" id="entite" formControlName="entite">
+        <option *ngFor="let entite of entites$|async" value="{{entite.id}}">{{entite.sigle | uppercase}} {{entite.nom | titlecase}}</option>
+      </select>
+      <div class="invalid-feedback"
+           [class.d-block]="form.controls['entite'].invalid && form.controls['entite'].touched && form.controls['entite'].hasError('required')">
+        (*) Entite requise
+      </div>
+    </div>
   </form>
 </div>
 <div class="modal-footer">

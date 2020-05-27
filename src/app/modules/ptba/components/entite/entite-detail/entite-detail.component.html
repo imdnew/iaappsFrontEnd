@@ -1,9 +1,9 @@
 <div class="card" style="width: 18rem;" *ngIf="entite$ | async; let entite">
     <div class="card-body">
-      <label>Sigle :</label>
-      <h5 class="card-title">{{entite.sigle | uppercase}}</h5>
-      <label>Nom :</label>
-    <h6 class="mb-2">{{entite.nom | titlecase}}</h6>
+      <label class="font-weight-bold">Sigle :</label>
+      <h6 class="font-weight-light">{{entite.sigle | uppercase}}</h6>
+      <label class="font-weight-bold">Nom :</label>
+    <h6 class="mb-2 font-weight-light">{{entite.nom | titlecase}}</h6>
       <p class="card-text"><small class="text-muted">Créee le {{entite.created_at | date:'dd/MM/yyyy'}}</small></p>
          <button class="btn btn-primary btn-sm mx-1"
         [disabled]="!loggedOut$ | async"

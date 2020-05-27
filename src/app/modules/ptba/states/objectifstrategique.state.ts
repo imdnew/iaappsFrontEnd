@@ -10,7 +10,8 @@ import {
   FilterObjectifstrategiques,
   SetLoading,
   SetLoaded,
-  UpsertObjectifstrategique
+  UpsertObjectifstrategique,
+  GetObjectifstrategiques
 } from './objectifstrategique.actions';
 import {tap, debounceTime, switchMap, map} from 'rxjs/operators';
 import {GrowlNotificationActions} from '../../../states/growl-notification/growl-notification.actions';
@@ -162,6 +163,17 @@ export class ObjectifstrategiqueState implements NgxsOnInit {
   @Action(FilterObjectifstrategiques)
   FilterObjectifstrategiques({patchState}: StateContext<ObjectifstrategiqueStateModel>, action: FilterObjectifstrategiques) {
     patchState({filterBy: action.payload});
+  }
+
+  @Action(GetObjectifstrategiques)
+  async GetObjectifstrategiques({patchState}: StateContext<ObjectifstrategiqueStateModel>) {
+    await this.objectifstrategiqueService.getAll().pipe(tap((result) => {
+      patchState({
+        loaded: true,
+        loading: false,
+        objectifstrategiques: result
+      });
+    })).subscribe();
   }
 
   @Action(ClearSelectedObjectifstrategique)

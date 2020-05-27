@@ -1,9 +1,11 @@
 <div class="card" style="width: 18rem;" *ngIf="objectifstrategique$ | async; let objectifstrategique">
     <div class="card-body">
-      <label>Code :</label>
-      <h5 class="card-title">{{objectifstrategique.code | uppercase}}</h5>
-      <label>Libelle :</label>
-    <h6 class="mb-2">{{objectifstrategique.libelle | titlecase}}</h6>
+      <label class="font-weight-bold">Code :</label>
+      <h6 class="font-weight-light">{{objectifstrategique.code | uppercase}}</h6>
+      <label class="font-weight-bold">Libéllé :</label>
+    <h6 class="mb-2 font-weight-light">{{objectifstrategique.libelle | titlecase}}</h6>
+    <label class="font-weight-bold">Entité :</label>
+    <h6 class="mb-2 font-weight-light">{{objectifstrategique.entite.nom | titlecase}} ({{objectifstrategique.entite.sigle | uppercase}})</h6>
       <p class="card-text"><small class="text-muted">Créee le {{objectifstrategique.created_at | date:'dd/MM/yyyy'}}</small></p>
          <button class="btn btn-primary btn-sm mx-1"
         [disabled]="!loggedOut$ | async"
