@@ -1,0 +1,57 @@
+<ng-container *ngIf="edit$ | async"> </ng-container>
+<div class="modal-header">
+  <h4 class="modal-title">{{formTitle$ | async}}</h4>
+  <button type="button"
+          class="close"
+          aria-label="Close"
+          (click)="dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="form"
+        (ngSubmit)="save()">
+
+    <div class="form-group">
+      <label>Code:</label>
+      <input class="form-control"
+             [class.is-invalid]="form.controls['code'].invalid && form.controls['code'].touched"
+             type="string"
+             [value]="form.get('code').value | uppercase"
+             formControlName="code">
+      <div class="invalid-feedback"
+           [class.d-block]="form.controls['code'].invalid && form.controls['code'].touched && form.controls['code'].hasError('required')">
+        (*) code requise
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Libelle:</label>
+      <input class="form-control"
+             [class.is-invalid]="form.controls['libelle'].invalid && form.controls['libelle'].touched"
+             type="string"
+             formControlName="libelle">
+      <div class="invalid-feedback"
+           [class.d-block]="form.controls['libelle'].invalid && form.controls['libelle'].touched && form.controls['libelle'].hasError('required')">
+        (*) libelle requis
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="objectifstrategique">Objectif Strategique</label>
+      <select class="form-control" id="objectifstrategique" formControlName="objectifstrategique">
+        <option *ngFor="let objectifstrategique of objectifstrategiques$|async" value="{{objectifstrategique.id}}">{{objectifstrategique.code | uppercase}} # {{objectifstrategique.libelle | titlecase}}</option>
+      </select>
+      <div class="invalid-feedback"
+           [class.d-block]="form.controls['objectifstrategique'].invalid && form.controls['objectifstrategique'].touched && form.controls['objectifstrategique'].hasError('required')">
+        (*) Objectif Strategique requise
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-secondary mx-2"
+          (click)="dismiss()"> Annuler </button>
+  <button class="btn btn-primary mx-2"
+          [disabled]="disabled"
+          (click)="save()"> Enregistrer </button>
+</div>

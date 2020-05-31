@@ -1,0 +1,41 @@
+<div class="container-fluid r-flex">
+  <div class="row">
+    <div class="col-12 col-md-2">
+      <app-objectifspecifique-filter class="float-left"></app-objectifspecifique-filter>
+    </div>
+    <div class="col-12 col-md-5">
+      <div class="px-0 pt-4 d-flex align-items-left">
+        <div *ngIf="loading$ | async">
+          <div class="spinner-border spinner-border-sm text-primary" role="status">
+          </div>
+          <span class="ml-2">En cours de chargement... </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-2">
+      <button class="btn btn-outline-success my-3 float-right glyphicon-apple"
+              [disabled]="!loggedOut$ | async"
+              (click)="openModal()"> Ajouter </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-9 sccont-2">
+     <router-outlet ></router-outlet>
+    </div>
+    <div class="col-12 col-md-3 d-md-block border-left border-light">
+      <div class="sticky-top"><h5>Détails</h5>
+        <div class="border-bottom border-light">&nbsp;</div>
+        <div *ngIf="!(objectifspecifique$ | async)">
+          <img class="img-responsive" width="200" height="200" src="assets/img/no-content.png">
+          <br>
+          <span class="text-secondary">Aucunn elemennt selectionné</span>
+        </div>
+        <router-outlet name="outletDetails"></router-outlet>
+    </div>
+    </div>
+  </div>
+
+</div>
+
+
+
