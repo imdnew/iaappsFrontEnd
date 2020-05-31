@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  appUrl: 'http://localhost:8000/',
+  appUrl: 'http://localhost:8000',
  /* firebase: {
     apiKey: "AIzaSyDODLVMuwrvGobMXkI89DktOLgwf0mCM24",
     authDomain: "joaq-lab.firebaseapp.com",
